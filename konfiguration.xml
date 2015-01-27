@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<konfiguration>
+	<visets>
+		<viset>
+			<name>AlleKG</name> 
+			<excelfile>C:\Users\HellwigP\Documents\4 Technology\00 Development\VI_sqlgenerator\VI\VI_Modul_Alle.xlsx</excelfile>
+			<kgtable>Profiles.vi_alle_profil</kgtable> <!-- Tabelle der Kenngrößen: wird in SQL statement genutzt -->
+			<isdefault>true</isdefault> <!-- optional, gibt an, ob es die zugehörigen KG immer benötigt werden (Nur eines erlaubt!) -->
+		</viset>
+		<viset>
+			<name>Diabetes</name> 
+			<excelfile>C:\Users\HellwigP\Documents\4 Technology\00 Development\VI_sqlgenerator\VI\VI_Modul_Diab.xlsx</excelfile>
+			<kgtable>Profiles.vi_diab_profil</kgtable> <!-- Tabelle der Kenngrößen: wird in SQL statement genutzt -->
+		</viset>
+		<viset>
+			<name>Pharma</name> 
+			<excelfile>C:\Users\HellwigP\Documents\4 Technology\00 Development\VI_sqlgenerator\VI\VI_Modul_Pharm.xlsx</excelfile>
+			<kgtable>Profiles.vi_pharm_profil</kgtable> <!-- Tabelle der Kenngrößen: wird in SQL statement genutzt -->
+		</viset>
+		<viset>
+			<name>Basis</name> 
+			<excelfile>C:\Users\HellwigP\Documents\4 Technology\00 Development\VI_sqlgenerator\VI\VI_Modul_Basis.xlsx</excelfile>
+			<kgtable>Profiles.vi_basis_profil</kgtable> <!-- Tabelle der Kenngrößen: wird in SQL statement genutzt -->
+		</viset>
+		<viset>
+			<name>HI</name> 
+			<excelfile>C:\Users\HellwigP\Documents\4 Technology\00 Development\VI_sqlgenerator\VI\VI_Modul_HI.xlsx</excelfile>
+			<kgtable>Profiles.vi_hi_profil</kgtable> <!-- Tabelle der Kenngrößen: wird in SQL statement genutzt -->
+		</viset>
+		<viset>
+			<name>Depression</name> 
+			<excelfile>C:\Users\HellwigP\Documents\4 Technology\00 Development\VI_sqlgenerator\VI\VI_Modul_Dep.xlsx</excelfile>
+			<kgtable>Profiles.vi_dep_profil</kgtable> <!-- Tabelle der Kenngrößen: wird in SQL statement genutzt -->
+		</viset>
+	</visets>
+	<intermediate_view>myview</intermediate_view> <!-- View wird erstellt, um ggfs. auf PID-Liste einzuschränken und KG-Tabellen zusammenzuführen; Parameter optional -->
+</konfiguration>
