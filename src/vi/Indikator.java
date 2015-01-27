@@ -1,15 +1,29 @@
 package vi;
 
+import java.util.HashMap;
+
 import configuration.Consts;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class Indikator.
  */
 public class Indikator {
 	
+	//Dokumentationsinfos
 	/** The id. */
 	private String id;
+	
+	private String name;
+	
+	private String bezeichner;
+	
+	private String fragestellung;
+	
+	private String indikatortyp;
+	
+	private String richtung;
+	
+	private String einheit;
 	
 	/** The zaehler. */
 	private String zaehler;
@@ -22,6 +36,10 @@ public class Indikator {
 	
 	/** The nenner teiler. */
 	private String nennerTeiler;
+	
+	
+	//Werte: year/Indikatorvalue
+	private HashMap<Integer,Indikatorvalue> value = new HashMap<Integer,Indikatorvalue>();
 
 	/**
 	 * Instantiates a new indikator.
@@ -32,8 +50,13 @@ public class Indikator {
 	 * @param idNenner the id nenner
 	 * @param idNennerTeiler the id nenner teiler
 	 */
-	public Indikator(String id, String idZaehler,String idZaehlerTeiler,String idNenner,String idNennerTeiler) {
-		this.id=id.replaceAll("\\s",""); //removes any whitespace from column names!!! 
+	public Indikator(String name, String bezeichner, String fragestellung, String indikatortyp, String richtung, String einheit, String idZaehler,String idZaehlerTeiler,String idNenner,String idNennerTeiler) {
+		this.name=name;
+		this.id=name.replaceAll("\\s",""); //removes any whitespace from column names!!!
+		this.setBezeichner(bezeichner);
+		this.setFragestellung(fragestellung);
+		this.setIndikatortyp(indikatortyp);
+		this.setEinheit(einheit);
 		this.zaehler=idZaehler;
 		this.zaehlerTeiler=idZaehlerTeiler;
 		this.nenner=idNenner;
@@ -51,6 +74,10 @@ public class Indikator {
 	 */
 	public String getId() {
 		return id;
+	}
+	
+	public String getName() {
+		return name;
 	}
 
 	/**
@@ -87,7 +114,68 @@ public class Indikator {
 	 */
 	public String getNennerTeiler() {
 		return nennerTeiler;
-	}	
+	}
+
+	public String getBezeichner() {
+		return bezeichner;
+	}
+
+	public void setBezeichner(String bezeichner) {
+		this.bezeichner = bezeichner;
+	}
+
+	public String getFragestellung() {
+		return fragestellung;
+	}
+
+	public void setFragestellung(String fragestellung) {
+		this.fragestellung = fragestellung;
+	}
+
+	public String getIndikatortyp() {
+		return indikatortyp;
+	}
+
+	public void setIndikatortyp(String indikatortyp) {
+		this.indikatortyp = indikatortyp;
+	}
+
+	public String getRichtung() {
+		return richtung;
+	}
+
+	public void setRichtung(String richtung) {
+		this.richtung = richtung;
+	}
+
+	public String getEinheit() {
+		return einheit;
+	}
+
+	public void setEinheit(String einheit) {
+		this.einheit = einheit;
+	}
+
+	public float getValueIG(int year) {
+		if (value.containsKey(year)) return value.get(year).getValueIG();
+		return Consts.noValue;
+	}
 	
+	public float getValueVG(int year) {
+		if (value.containsKey(year)) return value.get(year).getValueVG();
+		return Consts.noValue;
+	}
+
+	public void setValue(int year, float v, boolean isIG) {
+		if (value.containsKey(year)) {
+			if (isIG) value.get(year).setValueIG(v);
+			else value.get(year).setValueVG(v);
+		} else {
+			Indikatorvalue iv = new Indikatorvalue();
+			if (isIG) iv.setValueIG(v);
+			else iv.setValueVG(v);
+			value.put(year, iv);
+		}
+	}	
 
 }

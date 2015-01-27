@@ -34,34 +34,5 @@ public class VIset {
 	public boolean isDefault() {
 		return isdefault.toLowerCase().equals("true");
 	}
-	
-	
-	/**
-	 * Gets the name.
-	 *
-	 * @return the datentyp
-	 */
-	public String getName() {
-		return name.toLowerCase();
-	}
-	
-	/**
-	 * Gets the excelfile path.
-	 *
-	 * @return the excelfile path
-	 */
-	public String getExcelfile() {
-		return excelfile;
-	}
-	
-	
-	/**
-	 * Gets the kgtable.
-	 *
-	 * @return the kgtable
-	 */
-	public String getKgtable() {
-		return kgtable.toLowerCase();
-	}
 
 }

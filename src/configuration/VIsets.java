@@ -24,7 +24,7 @@ public class VIsets {
 	 */
 	public VIset getSetByName(String name) {
 		for (VIset myset: viset) {
-			if (name.toLowerCase().equals(myset.getName())) return myset;
+			if (name.toLowerCase().equals(myset.name.toLowerCase())) return myset;
 		}
 		return null;
 	}

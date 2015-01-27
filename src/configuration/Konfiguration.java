@@ -4,7 +4,6 @@ import org.xmappr.Element;
 import org.xmappr.RootElement;
 
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class Konfiguration.
  * Elements from konfiguration.xml are loaded into here, into variables defined acc. to xml tag.
@@ -20,6 +19,11 @@ public class Konfiguration {
 	/** The isdefault. */
 	@Element(defaultValue="myview")
 	public String intermediate_view;
+	
+	/** The template. */
+	@Element
+	public Template template;
+	
 	
 	/**
 	 * Gets the sets the by name.
@@ -40,13 +44,5 @@ public class Konfiguration {
 		return visets.getDefaultSet();
 	}
 	
-	/**
-	 * Gets the view.
-	 *
-	 * @return the view
-	 */
-	public String getView() {
-		return intermediate_view;
-	}
 	
 }

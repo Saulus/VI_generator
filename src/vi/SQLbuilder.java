@@ -41,11 +41,9 @@ public class SQLbuilder {
 	/** The view. */
 	private String view;
 	
-	/** The efile. */
-	private Excelfile efile;
 	
 	/**
-	 * Instantiates a new SQ lbuilder.
+	 * Instantiates a new SQlbuilder.
 	 *
 	 * @param set the set
 	 * @param defaultset the defaultset
@@ -57,10 +55,10 @@ public class SQLbuilder {
 	 * @throws FileNotFoundException the file not found exception
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
-	public SQLbuilder(VIset set, VIset defaultset, String pidtable,String years, String outputtable, String view) throws InvalidFormatException, FileNotFoundException, IOException {
-		this.kgtable=set.getKgtable();
+	public SQLbuilder(VIset set, VIset defaultset, String pidtable,String years, String outputtable, String view) {
+		this.kgtable=set.kgtable;
 		if (defaultset != null) {
-			this.kgdefault=defaultset.getKgtable();
+			this.kgdefault=defaultset.kgtable;
 			this.hasDefault=true;
 		}
 		if (!pidtable.isEmpty()) {
@@ -74,7 +72,6 @@ public class SQLbuilder {
 		}
 		this.outputtable=outputtable;
 		this.view = view;
-		efile = new Excelfile(set.getExcelfile());
 	}
 	
 	
@@ -84,7 +81,7 @@ public class SQLbuilder {
 	 * @return the string
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
-	public String build() throws IOException {
+	public String build(Indikatoren indikatoren) {
 		//1. create view statement to combine set-kg and default-kg, and reduce to PIDs 
 		String limit = "";
 		if (hasPidtable || hasYears) {
@@ -102,17 +99,13 @@ public class SQLbuilder {
 		//2. iterate over indicators
 		String statement2="create table " + outputtable + " as select ";
 		if(hasYears) statement2 += "Bezugsjahr, ";
-		Indikator in;
 		boolean hasIn = false;
-		while (efile.hasNextIndikator()) {
-			in = efile.getNextIndikator();
-			if (in != null) {
+		for (Indikator in : indikatoren.getAllIndikators()) {
 				statement2 += "(sum(" + in.getZaehler() + ")/sum(" + in.getZaehlerTeiler() + 
 						"))/(sum(" + in.getNenner() + ")/sum(" + in.getNennerTeiler() + ")) as " +
 						in.getId()
 						+ ", ";
 				hasIn = true;
-			}
 		}
 		if (!hasIn) statement2 += "0 as indikator;";
 		else { 

@@ -12,8 +12,24 @@ package configuration;
 
 public final class Consts {
 	
+	/** The Constant statusCol. */
+	public static final String sqlmodus = "sql";
+	public static final String xlsmodus = "xls";
+	
 	/** The Constant IDcol. */
 	public static final String IDcol = "Externe_ID";
+	
+	public static final String BEZEICHNERcol = "Bezeichner";
+	
+	public static final String FRAGEcol = "Fragestellung";
+	
+	public static final String TYPcol = "Indikatortyp";
+	
+	public static final String RICHTUNGcol = "Richtung";
+	
+	public static final String RICHTUNGdesk = "deskriptiv";
+	
+	public static final String EINHEITcol = "Einheit";
 	
 	/** The Constant IDZaehlerCol. */
 	public static final String IDZaehlerCol = "Zaehler_ID";
@@ -38,6 +54,8 @@ public final class Consts {
 	
 	/** The Constant statusUsed. */
 	public static final String[] statusUsed = {"Validierung","Freigegeben","Nur Ident"};
+	
+	public static final float noValue = -100000;
 		
 	 /**
  	 * Instantiates a new consts.

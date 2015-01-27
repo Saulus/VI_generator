@@ -9,5 +9,6 @@
 	<classpathentry kind="lib" path="lib/poi-3.10.1/ooxml-lib/xmlbeans-2.6.0.jar"/>
 	<classpathentry kind="lib" path="lib/poi-3.10.1/poi-ooxml-schemas-3.10.1-20140818.jar"/>
 	<classpathentry kind="lib" path="lib/poi-3.10.1/ooxml-lib/dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="lib/opencsv-3.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -27,6 +27,12 @@ public class Excelfile {
 	/** The id col num. */
 	private int idColNum;
 	
+	private int bezeichnerColNum;
+	private int frageColNum;
+	private int typColNum;
+	private int richtungColNum;
+	private int einheitColNum;
+	
 	/** The zaehler col num. */
 	private int zaehlerColNum;
 	
@@ -60,6 +66,11 @@ public class Excelfile {
 		for (Cell cell : r) {
 			 switch (df.formatCellValue(cell)) {
              	case Consts.IDcol: idColNum = cell.getColumnIndex();
+             	case Consts.BEZEICHNERcol: bezeichnerColNum = cell.getColumnIndex();
+             	case Consts.FRAGEcol: frageColNum = cell.getColumnIndex();
+             	case Consts.TYPcol: typColNum = cell.getColumnIndex();
+             	case Consts.RICHTUNGcol: richtungColNum = cell.getColumnIndex();
+             	case Consts.EINHEITcol: einheitColNum = cell.getColumnIndex();
              	case Consts.IDZaehlerCol: zaehlerColNum = cell.getColumnIndex();
              	case Consts.IDZaehlerTeilerCol: zaehlerTeilerColNum = cell.getColumnIndex();
              	case Consts.IDNennerCol: nennerColNum = cell.getColumnIndex();
@@ -97,6 +108,11 @@ public class Excelfile {
 		if (statusOk) {
 			ind = new Indikator(
 					df.formatCellValue(mySheet.getRow(currentRowNum).getCell(idColNum)),
+					df.formatCellValue(mySheet.getRow(currentRowNum).getCell(bezeichnerColNum)),
+					df.formatCellValue(mySheet.getRow(currentRowNum).getCell(frageColNum)),
+					df.formatCellValue(mySheet.getRow(currentRowNum).getCell(typColNum)),
+					df.formatCellValue(mySheet.getRow(currentRowNum).getCell(richtungColNum)),
+					df.formatCellValue(mySheet.getRow(currentRowNum).getCell(einheitColNum)),
 					df.formatCellValue(mySheet.getRow(currentRowNum).getCell(zaehlerColNum)),
 					df.formatCellValue(mySheet.getRow(currentRowNum).getCell(zaehlerTeilerColNum)),
 					df.formatCellValue(mySheet.getRow(currentRowNum).getCell(nennerColNum)),
