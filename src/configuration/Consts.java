@@ -17,7 +17,9 @@ public final class Consts {
 	public static final String xlsmodus = "xls";
 	
 	/** The Constant IDcol. */
-	public static final String IDcol = "Externe_ID";
+	public static final String IDcol = "Interne_ID";
+	
+	public static final String NAMEcol = "Externe_ID";
 	
 	public static final String BEZEICHNERcol = "Bezeichner";
 	

@@ -75,6 +75,12 @@ public class SQLbuilder {
 	}
 	
 	
+	public static boolean isNumeric(String str)
+	{
+	  return str.matches("-?\\d+(\\.\\d+)?");  //match a number with optional '-' and decimal.
+	}
+	
+	
 	/**
 	 * Builds the.
 	 *
@@ -101,8 +107,15 @@ public class SQLbuilder {
 		if(hasYears) statement2 += "Bezugsjahr, ";
 		boolean hasIn = false;
 		for (Indikator in : indikatoren.getAllIndikators()) {
-				statement2 += "(sum(" + in.getZaehler() + ")/sum(" + in.getZaehlerTeiler() + 
-						"))/(sum(" + in.getNenner() + ")/sum(" + in.getNennerTeiler() + ")) as " +
+				String zaehler = in.getZaehler();
+				if (!isNumeric(zaehler)) zaehler = "sum(" + zaehler + ")";
+				String zaehlerteiler = in.getZaehlerTeiler();
+				if (!isNumeric(zaehlerteiler)) zaehlerteiler = "sum(" + zaehlerteiler + ")";
+				String nenner = in.getNenner();
+				if (!isNumeric(nenner)) nenner = "sum(" + nenner + ")";
+				String nennerteiler = in.getNennerTeiler();
+				if (!isNumeric(nennerteiler)) nennerteiler = "sum(" + nennerteiler + ")";
+				statement2 += "("+zaehler+"/"+zaehlerteiler+")/("+nenner+"/"+nennerteiler+") as " +
 						in.getId()
 						+ ", ";
 				hasIn = true;

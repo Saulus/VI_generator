@@ -35,18 +35,19 @@
 	</visets>
 	<intermediate_view>myview</intermediate_view> <!-- View wird erstellt, um ggfs. auf PID-Liste einzuschränken und KG-Tabellen zusammenzuführen; Parameter optional -->
 	<template>
-		<excelfile>C:\Users\HellwigP\Documents\4 Technology\00 Development\VI_exceloutput\VI\template.xlsx</excelfile>
+		<excelfile>C:\Users\HellwigP\Documents\4 Technology\00 Development\VI_generator\VI\template.xlsx</excelfile>
 		<indikatorsheet>
 			<name>Indikatoren</name>
 			<viset>C2</viset>
 			<jahr>C3</jahr>
 			<typzeile>12</typzeile><!-- = startzeile -->
-			<deskriptivzeile>13</deskriptivzeile>
-			<richtungszeile>14</richtungszeile>
+			<deskriptivzeile>13</deskriptivzeile><!-- für "deskriptive" indiklatoren = spezielles format --> 
+			<richtungszeile>14</richtungszeile><!-- für "hoch/niedrig" indiklatoren = spezielles format --> 
 			<typspalte>A</typspalte>
 			<idspalte>B</idspalte><!--name, Bezeichner, richtung, einheit-->
 			<gruppenspalte>F</gruppenspalte>
 			<vergleichsspalte>G</vergleichsspalte>
+			<effektspalte>H</effektspalte>
 		</indikatorsheet>
 	</template>
 </konfiguration>

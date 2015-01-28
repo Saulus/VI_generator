@@ -50,21 +50,27 @@ public class Indikator {
 	 * @param idNenner the id nenner
 	 * @param idNennerTeiler the id nenner teiler
 	 */
-	public Indikator(String name, String bezeichner, String fragestellung, String indikatortyp, String richtung, String einheit, String idZaehler,String idZaehlerTeiler,String idNenner,String idNennerTeiler) {
+	public Indikator(String id, String name, String bezeichner, String fragestellung, String indikatortyp, String richtung, String einheit, String idZaehler,String idZaehlerTeiler,String idNenner,String idNennerTeiler) {
 		this.name=name;
-		this.id=name.replaceAll("\\s",""); //removes any whitespace from column names!!!
+		this.id=id.replaceAll("\\s",""); //removes any whitespace from column names!!!
 		this.setBezeichner(bezeichner);
 		this.setFragestellung(fragestellung);
 		this.setIndikatortyp(indikatortyp);
+		this.setRichtung(richtung);
 		this.setEinheit(einheit);
-		this.zaehler=idZaehler;
-		this.zaehlerTeiler=idZaehlerTeiler;
-		this.nenner=idNenner;
-		this.nennerTeiler=idNennerTeiler;
+		this.zaehler=parseFractionpart(idZaehler);
+		this.zaehlerTeiler=parseFractionpart(idZaehlerTeiler);
+		this.nenner=parseFractionpart(idNenner);
+		this.nennerTeiler=parseFractionpart(idNennerTeiler);
 		if (zaehler.startsWith(Consts.konstantePrefix)) zaehler = zaehler.substring(Consts.konstantePrefix.length()); 
 		if (zaehlerTeiler.startsWith(Consts.konstantePrefix)) zaehlerTeiler = zaehlerTeiler.substring(Consts.konstantePrefix.length());
 		if (nenner.startsWith(Consts.konstantePrefix)) nenner = nenner.substring(Consts.konstantePrefix.length()); 
 		if (nennerTeiler.startsWith(Consts.konstantePrefix)) nennerTeiler = nennerTeiler.substring(Consts.konstantePrefix.length());
+	}
+	
+	private String parseFractionpart(String str) {
+		String ret = str.replaceAll("\\s",""); //removes any whitespace
+		return ret;
 	}
 
 	/**
