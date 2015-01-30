@@ -167,7 +167,7 @@ public class VI_generator {
 			}
 			if (hasCompareGroup) {
 				try {
-					in_file = new InputFile(igcsv, indikatoren, false);
+					in_file = new InputFile(ivcsv, indikatoren, false);
 				} catch (Exception e) {
 					System.err.println(e.getMessage());
 					System.exit(1);

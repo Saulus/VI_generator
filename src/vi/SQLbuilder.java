@@ -120,12 +120,10 @@ public class SQLbuilder {
 						+ ", ";
 				hasIn = true;
 		}
-		if (!hasIn) statement2 += "0 as indikator;";
-		else { 
-			statement2 = statement2.substring(0, statement2.length()-2) + " from " + view;
-			if(hasYears) statement2 += " group by Bezugsjahr"; 
-			statement2 += ";";
-		}
+		if (!hasIn) statement2 += "0 as indikator  "; 
+		statement2 = statement2.substring(0, statement2.length()-2) + " from " + view;
+		if(hasYears) statement2 += " group by Bezugsjahr"; 
+		statement2 += ";";
 		return statement1 + statement2;
 	}
 
